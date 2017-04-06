@@ -1,28 +1,45 @@
-== README
+# DB構成
+***
+### users table
+##### association
+* has_many :groups
+* has_many :groups, through: :chats
+* has_many :messages, as: :messageable
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+|Column|Type|Options|
+|:-:|:-:|:-:|
+|name|string|null: false, index: true, unique: true|
+|email|text|null: false, unique: true|
+|password|text|null: false|
+|password_confirmation|text|null: false|
+|timestamps||　|
 
-Things you may want to cover:
+### groups table
+##### association
+* has_many :users
+* has_many :users, through: :chats
+* has_many :messages, as: :messageable
 
-* Ruby version
+|Column|Type|Options|
+|:-:|:-:|:-:|
+|name|string|null: false, unique: true, index: true|
+|timestamps||　|
 
-* System dependencies
+### chats
+##### association
+* belongs_to :user
+* belongs_to :group
 
-* Configuration
+|Column|Type|
+|:-:|:-:|
+|timestamps|　|
 
-* Database creation
+### messages table
+##### association
+* belongs_to :messageable, polymorphic: true
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+|Column|Type|Options|
+|:-:|:-:|:-:|
+|body|text|index: true|
+|image|string|index: true|
+|timestamps||null: false|
