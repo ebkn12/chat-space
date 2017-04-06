@@ -2,8 +2,8 @@
 ***
 ### users table
 ##### association
-* has_many :members
-* has_many :groups, through: :members
+* has_many :group_users
+* has_many :groups, through: :group_users
 * has_many :messages
 
 |Column|Type|Options|
@@ -12,18 +12,23 @@
 
 ### groups table
 ##### association
-* has_many :members
-* has_many :users, through: :members
+* has_many :group_users
+* has_many :users, through: :group_users
 * has_many :messages
 
 |Column|Type|Options|
 |:-:|:-:|:-:|
 |name|string|null: false, unique: true, index: true|
 
-### members table
+### group_users table
 ##### association
 * belongs_to :user
 * belongs_to :group
+
+|Column|Type|Options|
+|:-:|:-:|:-:|
+|user_id|integer|null: false|
+|group_id|integer|null: false|
 
 ### messages table
 ##### association
@@ -34,3 +39,5 @@
 |:-:|:-:|:-:|
 |body|text|index: true|
 |image|string|index: true|
+|user|references|foreign_key: true|
+|group|references|foreign_key: true|
