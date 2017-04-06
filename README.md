@@ -29,6 +29,9 @@
 |:-:|:-:|:-:|
 |user_id|integer|null: false|
 |group_id|integer|null: false|
+##### references
+references :user, foreign_key: true
+references :group, foreign_key: true
 
 ### messages table
 ##### association
@@ -39,5 +42,8 @@
 |:-:|:-:|:-:|
 |body|text|index: true|
 |image|string|index: true|
-|user|references|foreign_key: true|
-|group|references|foreign_key: true|
+|user_id|integer|null: false|
+|group_id|integer|null: false|
+##### references
+references :user, foreign_key: true
+references :group, foreign_key: true
