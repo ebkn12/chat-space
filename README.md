@@ -18,7 +18,7 @@
 
 |Column|Type|Options|
 |:-:|:-:|:-:|
-|name|string|null: false, unique: true, index: true|
+|name|string|null: false, unique: true|
 
 ### group_users table
 ##### association
@@ -40,8 +40,8 @@ references :group, foreign_key: true
 
 |Column|Type|Options|
 |:-:|:-:|:-:|
-|body|text|index: true|
-|image|string|index: true|
+|body|text||
+|image|string||
 |user_id|integer|null: false|
 |group_id|integer|null: false|
 ##### references
