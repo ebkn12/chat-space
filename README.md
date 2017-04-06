@@ -4,7 +4,7 @@
 ##### association
 * has_many :chats
 * has_many :groups, through: :chats
-* has_many :messages, as: :messageable
+* has_many :messages
 
 |Column|Type|Options|
 |:-:|:-:|:-:|
@@ -14,7 +14,7 @@
 ##### association
 * has_many :chats
 * has_many :users, through: :chats
-* has_many :messages, as: :messageable
+* has_many :messages
 
 |Column|Type|Options|
 |:-:|:-:|:-:|
@@ -27,7 +27,8 @@
 
 ### messages table
 ##### association
-* belongs_to :messageable, polymorphic: true
+* belongs_to :user
+* belongs_to :group
 
 |Column|Type|Options|
 |:-:|:-:|:-:|
