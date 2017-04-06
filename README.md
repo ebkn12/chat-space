@@ -2,8 +2,8 @@
 ***
 ### users table
 ##### association
-* has_many :chats
-* has_many :groups, through: :chats
+* has_many :members
+* has_many :groups, through: :members
 * has_many :messages
 
 |Column|Type|Options|
@@ -12,15 +12,15 @@
 
 ### groups table
 ##### association
-* has_many :chats
-* has_many :users, through: :chats
+* has_many :members
+* has_many :users, through: :members
 * has_many :messages
 
 |Column|Type|Options|
 |:-:|:-:|:-:|
 |name|string|null: false, unique: true, index: true|
 
-### chats table
+### members table
 ##### association
 * belongs_to :user
 * belongs_to :group
