@@ -1,18 +1,6 @@
 .content
   .content__side
-    .content__side__header
-      .content__side__header__user
-        %h2 seo
-      .content__side__header__icon
-        = fa_icon "edit"
-        = fa_icon "gear"
-    %ul
-      %li.content__side__group
-        %h2 sample
-        %p Good bye world!
-      %li.content__side__group
-        %h2 sample2
-        %p Good bye world!
+    = render "side"
   .content__main
     .content__main__header
       .content__main__header__group
@@ -31,9 +19,4 @@
             %strong neko 2016/07/21 06:13:20
           %p Good bye world!
     .content__main__footer
-      .content__main__footer--message
-        = text_field :message, placeholder: "type a message"
-      .content__main__footer--picture
-        = fa_icon "file-picture-o"
-      .content__main__footer--send
-        %strong Send
+      = render "footer"
