@@ -39,12 +39,12 @@
     background-color: #FFFFFF;
     clear: both;
     &__message {
-      color: $main-text;
       height: 100%;
       overflow: auto;
       h2 {
         padding-bottom: 10px;
         font-size: 16px;
+        color: $main-text;
         .time {
           margin-left: 10px;
           color: $main-time;
@@ -65,7 +65,7 @@
     padding: 20px 40px 20px 40px;
     &--message {
       input[type=text] {
-        width: 80%;
+        width: calc(100% - 130px);
         height: 100%;
         font-size: 16px;
         padding-left: 10px;
