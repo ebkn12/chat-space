@@ -3,7 +3,7 @@
   height: 100vh;
   float: left;
   &__header {
-    width: calc(100vw - 300px);
+    width: calc(100% - 80px);
     height: 15%;
     position: relative;
     padding: 0 40px;
@@ -12,7 +12,7 @@
     &__group {
       padding: 35px 0 15px 0;
       float: left;
-      h2 {
+      &__name {
         font-size: 20px;
         color: $main-group;
         padding-bottom: 15px;
@@ -30,22 +30,22 @@
       padding: 0 20px;
       float: right;
       color: $main-button;
+      text-decoration: none;
     }
   }
   &__chat {
-    width: calc(100vw - 300px);
-    padding: 0 40px;
+    width: calc(100% - 80px);
+    padding: 46px 40px 90px 40px;
     background-color: #FFFFFF;
     clear: both;
     &__message {
-      padding-top: 46px;
       color: $main-text;
       height: 100%;
       overflow: auto;
       h2 {
         padding-bottom: 10px;
         font-size: 16px;
-        .timestamps {
+        .time {
           margin-left: 10px;
           color: $main-time;
           font-size: 12px;
@@ -58,13 +58,14 @@
     }
   }
   &__footer {
-    width: calc(100vw - 300px);
+    width: calc(100vw - 300px - 80px);
     bottom: 0;
     position: absolute;
     background-color: $main;
     padding: 20px 40px 20px 40px;
     &--message {
       input[type=text] {
+        width: 80%;
         height: 100%;
         font-size: 16px;
         padding-left: 10px;
