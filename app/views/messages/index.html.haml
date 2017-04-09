@@ -13,3 +13,27 @@
       %li.content__side__group
         %h2 sample2
         %p Good bye world!
+  .content__main
+    .content__main__header
+      .content__main__header__group
+        %h2 sample
+        %p Members: seo neko
+      .content__main__header--edit
+        %strong Edit
+    .content__main__chat
+      %ul
+        %li.content__main__chat__message
+          %h2
+            %strong seo 2016/07/21 06:12:50
+          %p Hello world!
+        %li.content__main__chat__message
+          %h2
+            %strong neko 2016/07/21 06:13:20
+          %p Good bye world!
+    .content__main__footer
+      .content__main__footer--message
+        = text_field :message, placeholder: "type a message"
+      .content__main__footer--picture
+        = fa_icon "file-picture-o"
+      .content__main__footer--send
+        %strong Send
