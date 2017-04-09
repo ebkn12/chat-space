@@ -1,0 +1,44 @@
+.content__side {
+  width: 300px;
+  height: 100vh;
+  background-color: $side-groups;
+  color: $side-text;
+  float: left;
+  &__header {
+    background-color: $side-header;
+    padding: 0 20px;
+    height: 15%;
+    position: relative;
+    &__user {
+      height: 50px;
+      line-height: 50px;
+      margin: auto 0;
+      font-size: 16px;
+      top: 0;
+      bottom: 0;
+      position: absolute;
+    }
+    &__icon {
+      height: 50px;
+      line-height: 50px;
+      margin: auto 0;
+      font-size: 16px;
+      top: 0;
+      bottom: 0;
+      right: 20px;
+      position: absolute;
+
+    }
+  }
+  &__group {
+    padding: 20px 20px 40px 20px;
+    clear: both;
+    h2 {
+      padding-bottom: 5px;
+      font-size: 15px;
+    }
+    p {
+      font-size: 11px;
+    }
+  }
+}
