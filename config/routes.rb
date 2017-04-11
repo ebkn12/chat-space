@@ -1,7 +1,4 @@
 Rails.application.routes.draw do
-  devise_for :users, controllers: {
-    sessions: "users/sessions",
-    registraions: "users/registrations"
-  }
+  devise_for :users
   root "messages#index"
 end
