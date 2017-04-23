@@ -7,8 +7,10 @@
     = javascript_include_tag 'application', data:{ turbolinks:{ track: true }}
     = csrf_meta_tags
   %body
-    = flash.each do |key, value|
-      .alert
-        .alert-= key
-          = value
+    = if notice
+      %p.alert.alert-notice
+        = notice
+    = if alert
+      %p.alert.alert-error
+        = alert
     = yield
