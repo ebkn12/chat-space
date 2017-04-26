@@ -7,8 +7,6 @@
     = javascript_include_tag 'application', data:{ turbolinks:{ track: true }}
     = csrf_meta_tags
   %body
-    -# - flash.each do |key, value|
-    -#   = content_tag :p, notice, class: "#{key}"
     - if notice
       = content_tag :p, notice, class: "alert alert-notice"
     - if alert
