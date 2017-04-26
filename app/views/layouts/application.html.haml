@@ -8,7 +8,9 @@
     = csrf_meta_tags
   %body
     - if notice
-      = content_tag (:p, = notice, class: "alert alert-notice")
+      - content_tag(:p, class: "notice") do
+        = notice
     - if alert
-      = content_tag (:p, = alert, class: "alert alert-error")
+      - content_tag(:p, class: "alert") do
+        = alert
     = yield
