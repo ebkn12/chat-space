@@ -1,20 +1,27 @@
-.alert {
-  padding-left: 50px;
+.error {
+  background-color: #f2dede;
+  padding: 10px auto;
   font-size: 15px;
+  text-align: center;
 }
 
-.alert-error {
-  background-color: #ff4c82;
-}
-
-.alert-alert {
-  background-color: #ff4c82;
+.alert {
+  background-color: #f2dede;
+  padding: 10px auto;
+  font-size: 15px;
+  text-align: center;
  }
 
-.alert-success {
-    background-color: #bee8a2;
+.success {
+  background-color: #dff0d8;
+  padding: 10px auto;
+  font-size: 15px;
+  text-align: center;
  }
 
- .alert-notice {
-   background-color: #bee8a2;
+.notice {
+   background-color: #dff0d8;
+   padding: 10px auto;
+   font-size: 15px;
+   text-align: center;
  }
