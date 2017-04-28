@@ -7,8 +7,5 @@
     = javascript_include_tag 'application', data:{ turbolinks:{ track: true }}
     = csrf_meta_tags
   %body
-    - if notice
-      = content_tag :p, notice, class: "alert alert-notice"
-    - if alert
-      = content_tag :p, alert, class: "alert alert-error"
+    = render "layouts/flash"
     = yield
