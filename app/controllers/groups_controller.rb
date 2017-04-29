@@ -1,11 +1,13 @@
 class GroupsController < ApplicationController
   def new
     @group = Group.new
+    @users = User.all
   end
 
   def create
-    binding.pry
+    # binding.pry
     Group.create(group_params)
+    redirect_to :root
   end
 
   def edit
@@ -14,6 +16,6 @@ class GroupsController < ApplicationController
 
   private
   def group_params
-    params.permit(:name)
+    params.require(:group).permit(:name, :users)
   end
 end
