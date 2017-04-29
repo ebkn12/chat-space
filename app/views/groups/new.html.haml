@@ -20,7 +20,8 @@
         .chat-group-form__field--right
           #chat-group-users
             #chat-group-user-22.chat-group-user
-              = content_tag :p, "seo_kyohei", class: "chat-group-user__name"
+              = f.collection_check_boxes :id, @users, :id, :name do |b|
+                = b.label(class: "chat-group-user_name") { b.check_box + b.text }
       .chat-group-form__field
         .chat-group-form__field--left
         .chat-group-form__field--right
