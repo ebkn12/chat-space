@@ -4,10 +4,12 @@
   .content__side__header__icon
     = link_to edit_user_registration_path, style: "color:white;" do
       = fa_icon "edit"
+    &nbsp;
     = link_to new_group_path, style: "color:white" do
       = fa_icon "gear"
 %ul
-  %li.content__side__group
-    - @groups.each do |group|
-      = content_tag :div, group.name, class: "content__side__group__name"
-      = content_tag :p, "hogehoge"
+  - @groups.each do |group|
+    = link_to group_messages_path(group)
+      %li.content__side__group
+        = content_tag :div, group.name, class: "content__side__group__name"
+        = content_tag :p, "hogehoge"
