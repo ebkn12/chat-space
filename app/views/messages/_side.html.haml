@@ -9,7 +9,7 @@
       = fa_icon "gear"
 %ul
   - @groups.each do |group|
-    = link_to group_messages_path(group)
+    = link_to group_messages_path(group) do
       %li.content__side__group
         = content_tag :div, group.name, class: "content__side__group__name"
-        = content_tag :p, "hogehoge"
+        = content_tag :div, "hogehoge", class: "content__side__group__text"
