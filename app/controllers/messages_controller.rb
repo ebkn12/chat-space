@@ -1,5 +1,5 @@
 class MessagesController < ApplicationController
-  before_action :open_chat
+  # before_action :open_chat
 
   def index
     @groups = Group.all

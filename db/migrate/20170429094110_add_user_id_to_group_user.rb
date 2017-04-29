@@ -1,6 +1,6 @@
 class AddUserIdToGroupUser < ActiveRecord::Migration[5.0]
   def change
-    add_column :group_users, :user_id, :integer
-    add_column :group_users, :group_id, :integer
+    add_reference :group_users, :group, foreign_key: :true
+    add_reference :group_users, :user, foreign_kay: :true
   end
 end

@@ -5,7 +5,7 @@ class GroupsController < ApplicationController
   end
 
   def create
-    # binding.pry
+    binding.pry
     Group.create(group_params)
     redirect_to :root
   end
@@ -16,6 +16,6 @@ class GroupsController < ApplicationController
 
   private
   def group_params
-    params.require(:group).permit(:name, :users)
+    params.require(:group).permit(:name, user_ids:[])
   end
 end
