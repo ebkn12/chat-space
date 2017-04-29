@@ -1,6 +1,6 @@
 .content__side__header
   .content__side__header__user
-    @user.name
+    = current_user.name
   .content__side__header__icon
     = link_to edit_user_registration_path, style: "color:white;" do
       = fa_icon "edit"
@@ -8,8 +8,6 @@
       = fa_icon "gear"
 %ul
   %li.content__side__group
-    .content__side__group__name sample
-    %p Good bye world!
-  %li.content__side__group
-    .content__side__group__name sample2
-    %p Good bye world!
+    - @groups.each do |group|
+      = content_tag :div, group.name, class: "content__side__group__name"
+      = content_tag :p, "hogehoge"
