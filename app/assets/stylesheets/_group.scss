@@ -40,8 +40,9 @@
   }
 
   .chat-group-form__field {
+    clear: both;
     margin-top: 30px;
-
+    height: 50px;
     .chat-group-form__field--left {
       float: left;
       width: 30%;
@@ -72,6 +73,7 @@
   }
 
   .chat-group-user {
+    height: 50px;
     padding: 0 15px;
     line-height: 50px;
     font-size: 14px;
