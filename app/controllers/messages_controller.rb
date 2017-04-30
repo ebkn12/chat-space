@@ -11,7 +11,6 @@ class MessagesController < ApplicationController
 
   private
   def set_group
-    # binding.pry
     @group = current_user.groups.find(params[:group_id])
   end
 end
