@@ -1,13 +1,17 @@
 class MessagesController < ApplicationController
-  before_action :open_chat
+  before_action :set_group, only: :new
 
   def index
-    @groups = Group.all
+    @groups = current_user.groups
+  end
+
+  def new
+    @groups = current_user.groups
   end
 
   private
-  def open_chat
-    @groups = current_user.groups.all
-    @group = current_user.groups.find(params[:group_id]) if params[:group_id]
+  def set_group
+    # binding.pry
+    @group = current_user.groups.find(params[:group_id])
   end
 end
