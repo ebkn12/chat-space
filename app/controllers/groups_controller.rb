@@ -5,8 +5,9 @@ class GroupsController < ApplicationController
   end
 
   def create
-    Group.create(group_params)
-    redirect_to :root
+    @group = Group.new(group_params)
+    @group.save
+    redirect_to new_group_message_path(@group)
   end
 
   def edit
