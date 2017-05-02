@@ -12,17 +12,8 @@
           = f.label "チャットメンバーを追加", class: "chat-group-form__label"
         .chat-group-form__field--right
           .chat-group-form__search
-            = f.collection_check_boxes :user_ids, @users, :id, :name do |b|
-              = b.label(class: "chat-group-user_name") { b.check_box + b.text }
+            = f.collection_check_boxes :user_ids, @users, :id, :name
           #user-search-result
-      -# .chat-group-form__field
-      -#   .chat-group-form__field--left
-      -#     = f.label "チャットメンバー", class: "chat-group-form__label"
-      -#   .chat-group-form__field--right
-      -#     #chat-group-users
-      -#       #chat-group-user-22.chat-group-user
-      -#         - @users.each do |user|
-      -#           = content_tag :p, user.name, class: "chat-group-user_name"
       .chat-group-form__field
         .chat-group-form__field--left
         .chat-group-form__field--right
