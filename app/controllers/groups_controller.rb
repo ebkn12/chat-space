@@ -6,8 +6,11 @@ class GroupsController < ApplicationController
 
   def create
     @group = Group.new(group_params)
-    @group.save
-    redirect_to new_group_message_path(@group)
+    if @group.save
+      redirect_to new_group_message_path(@group), notice: "グループ作成に成功しました"
+    else
+      redirect_to new_group_path, alert: "グループ作成に失敗しました"
+    end
   end
 
   def edit
