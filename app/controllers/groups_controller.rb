@@ -1,7 +1,6 @@
 class GroupsController < ApplicationController
   def new
     @group = Group.new
-    @users = User.all
   end
 
   def create
@@ -9,14 +8,13 @@ class GroupsController < ApplicationController
     if @group.save
       redirect_to new_group_message_path(@group), notice: "グループ作成に成功しました"
     else
-      flash[:error] = "グループ作成に失敗しました"
+      flash[:alert] = "グループ作成に失敗しました"
       render :new
     end
   end
 
   def edit
     @group = Group.find(params[:id])
-    @users = User.all
   end
 
   def update
@@ -24,7 +22,7 @@ class GroupsController < ApplicationController
     if @group.update(group_params)
       redirect_to new_group_message_path(@group), notice: "グループ編集に成功しました"
     else
-      flash[:error] = "グループ編集に失敗しました"
+      flash[:alert] = "グループ編集に失敗しました"
       render :edit
     end
   end
