@@ -17,6 +17,13 @@ default: &default
   password:
   socket: /tmp/mysql.sock
 
+  # adapter: postgresql
+  # encoding: unicode
+  # pool: 5
+  # user_name: rails_user
+  # password:
+  # host: localhost
+
 development:
   <<: *default
   database: chat-space_development
@@ -52,3 +59,7 @@ production:
   database: chat-space_production
   username: chat-space
   password: <%= ENV['CHAT-SPACE_DATABASE_PASSWORD'] %>
+
+  # user_name: nakamura-lab
+  # password: n1k2m3r4fms
+  # host: takaisami.mind.meiji.ac.jp
