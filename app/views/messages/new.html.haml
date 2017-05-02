@@ -1,0 +1,24 @@
+.content
+  = render "side"
+  .content__main
+    .content__main__header
+      .content__main__header__group
+        .content__main__header__group__name
+          = @group.name
+        %span.content__main__header__group__member Member :
+        = content_tag :span, class: "content__main__header__group__member" do
+          - @group.users.pluck(:name).join(", ")
+      = link_to edit_group_path(@group) do
+        = content_tag :p, "Edit", class: "content__main__header--edit"
+    .content__main__chat
+      %ul
+        %li.content__main__chat__message
+          %h2
+            seo<span class="time">2016/07/21 06:12:50</span>
+          %p Hello world!
+        %li.content__main__chat__message
+          %h2
+            neko<span class="time">2016/07/21 06:13:20</span>
+          %p Good bye world!
+    .content__main__footer
+      = render "footer"

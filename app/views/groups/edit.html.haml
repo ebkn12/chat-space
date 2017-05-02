@@ -1,0 +1,23 @@
+.chat-group-form
+  %h1 チャットグループ編集
+  = form_for (@group) do |f|
+    #edit_chat_group_22.edit_chat_group
+      .chat-group-form__field.clearfix
+        .chat-group-form__field--left
+          = f.label "chat[group[name]]", "グループ名", class: "chat-group-form__label"
+        .chat-group-form__field--right
+          = f.text_field "chat_group[name]", id: "chat_group_name", class: "chat-group-form__input", placeholder: "グループ名を入力してください", value: "ほげー"
+      .chat-group-form__field.clearfix
+        .chat-group-form__field--left
+          = f.label "chat[group[チャットメンバーを追加]]", "チャットメンバーを追加", class: "chat-group-form__label"
+        .chat-group-form__field--right
+          .chat-group-form__search.clearfix
+            = f.text_field id: "user-search-field", class: "chat-group-form__input", placeholder: "追加したいユーザー名を入力してください"
+          #user-search-result
+      .chat-group-form__field.clearfix
+        .chat-group-form__field--left
+          = f.label "chat[group[チャットメンバー]]", "チャットメンバー", class: "chat-group-form__label"
+      .chat-group-form__field.clearfix
+        .chat-group-form__field--left
+        .chat-group-form__field--right
+          = f.submit "commit", class: "chat-group-form__action-btn", value: "Save", "data-disable-with" => "Save"
