@@ -46,4 +46,5 @@ ActiveRecord::Schema.define(version: 20170429094110) do
   end
 
   add_foreign_key "group_users", "groups"
+  add_foreign_key "group_users", "users"
 end
