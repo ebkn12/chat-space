@@ -7,8 +7,7 @@
           = @group.name
         %span.content__main__header__group__member Member :
         = content_tag :span, class: "content__main__header__group__member" do
-          - @group.users.each do |user|
-            = user.name
+          - @group.users.pluck(:name).join(", ")
       = link_to edit_group_path(@group) do
         = content_tag :p, "Edit", class: "content__main__header--edit"
     .content__main__chat
