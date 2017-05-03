@@ -8,6 +8,11 @@ class MessagesController < ApplicationController
   def new
   end
 
+  def create
+    @message = Message.find(params[:id])
+    @message.create(message_params)
+  end
+
   private
   def set_groups
     @groups = current_user.groups
@@ -15,6 +20,10 @@ class MessagesController < ApplicationController
 
   def set_group
     @group = current_user.groups.find(params[:group_id])
+  end
+
+  def message_params
+    params.require(:group).permit(:text, :image)
   end
 end
 
