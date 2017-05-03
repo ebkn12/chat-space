@@ -5,3 +5,4 @@ Rails.application.routes.draw do
   end
   root "messages#index"
 end
+
