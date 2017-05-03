@@ -17,3 +17,4 @@ class MessagesController < ApplicationController
     @group = current_user.groups.find(params[:group_id])
   end
 end
+
