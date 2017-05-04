@@ -9,7 +9,7 @@
         = content_tag :span, class: "content__main__header__group__member" do
           - @group.users.pluck(:name).join(", ")
       = link_to edit_group_path(@group) do
-        = content_tag :p, "Edit", class: "content__main__header--edit"
+        = content_tag :div, "Edit", class: "content__main__header--edit"
     %ul.content__main__chat
       = render @messages
     .content__main__footer
