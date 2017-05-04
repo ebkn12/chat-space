@@ -6,11 +6,12 @@ class MessagesController < ApplicationController
   end
 
   def new
+    @message = Message.new
   end
 
   def create
-    @message = Message.find(params[:id])
-    @message.create(message_params)
+    @message = current_user.messages.new(message_params)
+    @message.save
   end
 
   private
@@ -23,7 +24,7 @@ class MessagesController < ApplicationController
   end
 
   def message_params
-    params.require(:group).permit(:text, :image)
+    params.require(:message).permit(:body, :image).merge(group_id: params[:group_id])
   end
 end
 
