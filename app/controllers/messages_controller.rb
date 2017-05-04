@@ -1,5 +1,5 @@
 class MessagesController < ApplicationController
-  before_action :set_groups, only: [:new, :create]
+  before_action :set_groups, except: :create
   before_action :set_group, only: [:new, :create]
 
   def index
@@ -15,8 +15,7 @@ class MessagesController < ApplicationController
     if @message.save
       redirect_to new_group_message_path(@group), notice: "メッセージの送信に成功しました"
     else
-      flash.now[:alert] = "メッセージの送信に失敗しました"
-      # render :new
+      redirect_to new_group_message_path(@group), alert: "メッセージの送信に失敗しました"
     end
   end
 
