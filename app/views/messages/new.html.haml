@@ -10,16 +10,12 @@
           - @group.users.pluck(:name).join(", ")
       = link_to edit_group_path(@group) do
         = content_tag :p, "Edit", class: "content__main__header--edit"
-    .content__main__chat
-      %ul
+    %ul.content__main__chat
+      - @messages.each do |message|
         %li.content__main__chat__message
-          %h2
-            seo<span class="time">2016/07/21 06:12:50</span>
-          %p Hello world!
-        %li.content__main__chat__message
-          %h2
-            neko<span class="time">2016/07/21 06:13:20</span>
-          %p Good bye world!
+          = content_tag :span, message.user.name, class: "content__main__chat__message__name"
+          = content_tag :span, message.updated_at, class: "content__main__chat__message__time"
+          = content_tag :div, message.body, class: "content__main__chat__message__text"
     .content__main__footer
       = render "footer"
 
