@@ -2,12 +2,10 @@ require "rails_helper"
 
 RSpec.describe MessagesController, type: :controller do
   let(:user) { create(:user) }
-  before do
-    login_user(user)
-  end
+   before { sign_in user }
 
   describe "GET index" do
-    let(:groups) { create_list(:group, 2, user_ids: user.id)}
+    let(:groups) { create_list(:group, 2, user_ids: user.id) }
     before do
       get :index
     end
@@ -23,8 +21,8 @@ RSpec.describe MessagesController, type: :controller do
     end
 
     context "when user didn't sign_in" do
+      before { sign_out user }
       it "redirects to new_user_session" do
-        sign_out user
         expect(response).to redirect_to new_user_session_path
       end
     end
@@ -53,8 +51,9 @@ RSpec.describe MessagesController, type: :controller do
     end
 
     context "when user didn't sign_in" do
+      before { sign_out user }
+
       it "redirects to new_user_session" do
-        sign_out user
         expect(response).to redirect_to new_user_session_path
       end
     end
@@ -101,8 +100,9 @@ RSpec.describe MessagesController, type: :controller do
     end
 
     context "when user didn't sign_in" do
+      before { sign_out user }
+
       it "redirects to new_user_session" do
-        sign_out user
         success_message_params
         expect(response).to redirect_to new_user_session_path
       end
