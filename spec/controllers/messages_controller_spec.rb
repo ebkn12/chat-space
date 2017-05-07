@@ -2,13 +2,12 @@ require "rails_helper"
 
 RSpec.describe MessagesController, type: :controller do
   let(:user) { create(:user) }
-   before { sign_in user }
+  before { sign_in user }
 
   describe "GET index" do
-    let(:groups) { create_list(:group, 2, user_ids: user.id) }
-    before do
-      get :index
-    end
+    let(:groups)     { create_list(:group, 2, user_ids: user.id) }
+    let(:get_params) { get :index }
+    before { get :index }
 
     context "when user sign_in" do
       it "renders the index template" do
@@ -23,18 +22,18 @@ RSpec.describe MessagesController, type: :controller do
     context "when user didn't sign_in" do
       before { sign_out user }
       it "redirects to new_user_session" do
+        get_params
         expect(response).to redirect_to new_user_session_path
       end
     end
   end
 
   describe "GET new" do
-    let(:group)    { create(:group, user_ids: user.id) }
-    let(:message)  { create(:message, group_id: group.id, user_id: user.id) }
-    let(:messages) { create_list(:message, 2, group_id: group.id) }
-    before do
-      get :new, group_id: group.id
-    end
+    let(:group)      { create(:group, user_ids: user.id) }
+    let(:message)    { create(:message, group_id: group.id, user_id: user.id) }
+    let(:messages)   { create_list(:message, 2, group_id: group.id) }
+    let(:get_params) { get :new, group_id: group.id }
+    before { get :new, group_id: group.id }
 
     context "when user sign_in" do
       it "renders the new template" do
@@ -52,18 +51,18 @@ RSpec.describe MessagesController, type: :controller do
 
     context "when user didn't sign_in" do
       before { sign_out user }
-
       it "redirects to new_user_session" do
+        get_params
         expect(response).to redirect_to new_user_session_path
       end
     end
   end
 
   describe "POST create" do
-    let(:group)    { create(:group, user_ids: user.id) }
-    let(:message)  { create(:message, group_id: group.id, user_id: user.id) }
+    let(:group)                  { create(:group, user_ids: user.id) }
+    let(:message)                { create(:message, group_id: group.id, user_id: user.id) }
     let(:success_message_params) { post :create, message: attributes_for(:message), group_id: group.id }
-    let(:fail_message_params) { post :create, message: attributes_for(:message, body: ""), group_id: group.id }
+    let(:fail_message_params)    { post :create, message: attributes_for(:message, body: ""), group_id: group.id }
 
     context "when user sign_in" do
       context "success send message" do
@@ -101,7 +100,6 @@ RSpec.describe MessagesController, type: :controller do
 
     context "when user didn't sign_in" do
       before { sign_out user }
-
       it "redirects to new_user_session" do
         success_message_params
         expect(response).to redirect_to new_user_session_path
