@@ -1,13 +1,13 @@
 class MessagesController < ApplicationController
   before_action :set_groups, except: :create
-  before_action :set_group, only: [:new, :create]
+  before_action :set_group, except: :index
 
   def index
   end
 
   def new
     @message = Message.new
-    @messages = @group.messages.includes(:user).order("created_at DESC")
+    @messages = @group.messages.includes(:user)
   end
 
   def create
