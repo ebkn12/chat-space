@@ -15,6 +15,7 @@
       &__name {
         font-size: 20px;
         color: $main-group;
+        font-weight: bold;
         padding-bottom: 15px;
       }
       &__member {
@@ -35,23 +36,24 @@
   }
   &__chat {
     width: calc(100% - 80px);
+    height: calc(100% - 370px);
     padding: 46px 40px 90px 40px;
     background-color: #FFFFFF;
     clear: both;
+    overflow: scroll;
     &__message {
-      height: 100%;
-      overflow: auto;
-      h2 {
+      &__name {
         padding-bottom: 10px;
         font-size: 16px;
         color: $main-text;
-        .time {
+        font-weight: bold;
+      }
+      &__time {
           margin-left: 10px;
           color: $main-time;
           font-size: 12px;
-        }
       }
-      p {
+      &__text {
         font-size: 14px;
         padding-bottom: 40px;
       }
@@ -64,15 +66,13 @@
     background-color: $main;
     padding: 20px 40px 20px 40px;
     &--message {
-      input[type=text] {
-        width: calc(100% - 130px);
-        height: 100%;
-        font-size: 16px;
-        padding-left: 10px;
-        height: 46px;
-        line-height: 46px;
-        float: left;
-      }
+      width: calc(100% - 134px);
+      height: 100%;
+      font-size: 16px;
+      padding-left: 10px;
+      height: 46px;
+      line-height: 46px;
+      float: left;
     }
     &--picture {
       padding: 0 10px;

@@ -1,9 +1,6 @@
-.content__main__footer--message
-  = text_field :message, "", placeholder: "type a message"
-= link_to "/", style: "color:black" do
-  .content__main__footer--picture
+= form_for [@group, @message] do |f|
+  = f.text_field :body, class: "content__main__footer--message", placeholder: "type a message"
+  = link_to "/", class: "content__main__footer--picture", style: "color:black" do
     = fa_icon "file-picture-o"
-= link_to "/" do
-  .content__main__footer--send
-    Send
+  = f.submit "Send", class: "content__main__footer--send"
 
