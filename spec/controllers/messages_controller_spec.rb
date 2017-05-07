@@ -30,10 +30,10 @@ RSpec.describe MessagesController, type: :controller do
 
   describe "GET new" do
     let(:group)      { create(:group, user_ids: user.id) }
-    let(:message)    { create(:message, group_id: group.id, user_id: user.id) }
+    let(:message)    { create(:message, params: { group_id: group.id, user_id: user.id }) }
     let(:messages)   { create_list(:message, 2, group_id: group.id) }
-    let(:get_params) { get :new, group_id: group.id }
-    before { get :new, group_id: group.id }
+    let(:get_params) { get :new, params: { group_id: group.id } }
+    before { get :new, params: { group_id: group.id } }
 
     context "when user sign_in" do
       it "renders the new template" do
@@ -61,8 +61,8 @@ RSpec.describe MessagesController, type: :controller do
   describe "POST create" do
     let(:group)                  { create(:group, user_ids: user.id) }
     let(:message)                { create(:message, group_id: group.id, user_id: user.id) }
-    let(:success_message_params) { post :create, message: attributes_for(:message), group_id: group.id }
-    let(:fail_message_params)    { post :create, message: attributes_for(:message, body: ""), group_id: group.id }
+    let(:success_message_params) { post :create, params: { message: attributes_for(:message), group_id: group.id } }
+    let(:fail_message_params)    { post :create, params: { message: attributes_for(:message, body: ""), group_id: group.id } }
 
     context "when user sign_in" do
       context "success send message" do
