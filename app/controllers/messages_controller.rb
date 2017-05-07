@@ -1,5 +1,5 @@
 class MessagesController < ApplicationController
-  before_action :set_groups, except: :index
+  before_action :set_groups, only: [:new, :create]
   before_action :set_messages, only: :new
 
   def index
