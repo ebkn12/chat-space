@@ -1,18 +1,18 @@
 $(function(){
-  function sendMessage(message){
-    var html = `
-    <li class="content_main">
-      <span class="content__main__chat__message__name">
-        ${ message.user.name }
-      </span>
-      <span class= "content__main__chat__message__time">
-        ${ message.updated_at.strftime("%Y/%m/%d %H:%M:%S") }
-      </span>
-      <div class="content__main__chat__message__text">
-        ${ message.body }
-      </div>
-    </li>
-    `;
+  function buildHTML(message){
+    var html = $(`
+      <li class="content__main__chat__message">
+        <span class="content__main__chat__message__name">
+          ${ message.user.name }
+        </span>
+        <span class= "content__main__chat__message__time">
+          ${ message.updated_at }
+        </span>
+        <div class="content__main__chat__message__text">
+          ${ message.body }
+        </div>
+      </li>
+    `);
     return html;
   }
 
@@ -31,17 +31,16 @@ $(function(){
       dataType: "json"
     })
     .done(function(data){
-      var html = sendMessage(data);
+      var html = buildHTML(data);
       $(".content__main__chat__message").append(html);
       $(".content__main__footer--message").val("");
-      alert("成功");
     })
     .fail(function(){
       alert("Error");
-    });
+    })
     .always(function(){
       $(".content__main__footer--send").prop("disabled", false);
-    })
+    });
   });
 });
 
