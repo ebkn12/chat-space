@@ -17,15 +17,6 @@ $(function(){
     return html;
   }
 
-  function error_flash(data) {
-    var error_flash = $(`
-      <div class="alert">
-        "メッセージの送信に失敗しました"
-      </div>
-    `);
-    return error_flash
-    }
-
   $("#new_message").on("submit", function(e){
     $(".alert").remove();
     e.preventDefault();
@@ -49,8 +40,7 @@ $(function(){
       console.log(data);
     })
     .fail(function(data){
-      var html = error_flash(data);
-      $("body").prepend(html);
+      alert("メッセージを送信できません");
     })
     .always(function(){
       $(".content__main__footer--send").prop("disabled", false);
