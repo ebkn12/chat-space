@@ -1,4 +1,4 @@
-= form_for [@group, @message] do |f|
+= form_for [@group, @message], html: { class: "form-js" } do |f|
   = f.text_field :body, class: "content__main__footer--message", placeholder: "type a message"
   = link_to "/", class: "content__main__footer--picture", style: "color:black" do
     = fa_icon "file-picture-o"
