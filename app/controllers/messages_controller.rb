@@ -13,7 +13,7 @@ class MessagesController < ApplicationController
     @message = current_user.messages.new(message_params)
     if @message.save
       respond_to do |format|
-        format.html { redirect_to new_group_message_path(@group), notice: "メッセージの送信に成功しました" }
+        format.html { redirect_to new_group_message_path, notice: "メッセージの送信に成功しました" }
         format.json
       end
     else

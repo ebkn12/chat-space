@@ -1,5 +1,4 @@
-json.(@message, :id, :body, :image, :updated_at)
+json.name       current_user.name
+json.updated_at @message.updated_at.to_s(:default)
+json.body       @message.body
 
-json.user do
-  json.name current_user.name
-end

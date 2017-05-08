@@ -3,7 +3,7 @@ $(function(){
     var html = $(`
       <li class="content__main__chat__message">
         <span class="content__main__chat__message__name">
-          ${ message.user.name }
+          ${ message.name }
         </span>
         <span class= "content__main__chat__message__time">
           ${ message.updated_at }
@@ -13,30 +13,44 @@ $(function(){
         </div>
       </li>
     `);
+
     return html;
   }
 
-  $(".form-js").on("submit", function(e){
+  function error_flash(data) {
+    var error_flash = $(`
+      <div class="alert">
+        "メッセージの送信に失敗しました"
+      </div>
+    `);
+    return error_flash
+    }
+
+  $("#new_message").on("submit", function(e){
+    $(".alert").remove();
     e.preventDefault();
     var textField = $(".content__main__footer--message");
-    var body = textField.val();
+    var input = textField.val();
+    var path = location.pathname;
     $.ajax({
       type: "POST",
-      url: location.pathname,
+      url: path,
       data: {
         message: {
-          body: body
+          body: input
         }
       },
       dataType: "json"
     })
     .done(function(data){
       var html = buildHTML(data);
-      $(".content__main__chat__message").append(html);
+      $(".content__main__chat").append(html);
       $(".content__main__footer--message").val("");
+      console.log(data);
     })
-    .fail(function(){
-      alert("Error");
+    .fail(function(data){
+      var html = error_flash(data);
+      $("body").prepend(html);
     })
     .always(function(){
       $(".content__main__footer--send").prop("disabled", false);
