@@ -8,8 +8,14 @@
     .chat-group-form__field--left
       = f.label "チャットメンバーを追加", class: "chat-group-form__label"
     .chat-group-form__field--right
-      .chat-group-form__search
-        = f.collection_check_boxes :user_ids, User.all, :id, :name
+      %input#chat-group-form__search.chat-group-form__input{ type: "text", placeholder: "追加するユーザー名を入力してください" }
+      #search__user--result
+  .chat-group-form__field
+    .chat-group-form__field--left
+      = f.label "チャットメンバー", class: "chat-group-form__label"
+    .chat-group-form__field--right
+      .chat-group-user
+        = render partial: "user"
   .chat-group-form__field
     .chat-group-form__field--left
     .chat-group-form__field--right
