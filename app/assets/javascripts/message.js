@@ -27,6 +27,16 @@ $(function(){
     return flash;
   }
 
+  function errorFlash(){
+    var flash = `
+      <div class="alert">
+        メッセージの送信に失敗しました
+      </div>
+    `;
+
+    return flash;
+  }
+
   function autoScroll() {
     $('.content__main__chat').animate( {
       scrollTop: $(document).height()
@@ -34,11 +44,9 @@ $(function(){
   }
 
   $("#new_message").on("submit", function(e){
-    $(".alert").remove();
     e.preventDefault();
     var textField = $(".content__main__footer--message");
     var input = textField.val();
-    // var path = location.pathname;
     $.ajax({
       type: "POST",
       url: "./",
@@ -55,14 +63,18 @@ $(function(){
       var html = buildHTML(data);
       $(".content__main__chat").append(html);
       $(".content__main__footer--message").val("");
-      $(".notice").remove();
       autoScroll();
     })
     .fail(function(data){
-      alert("メッセージを送信できません");
+      var flash = errorFlash();
+      $("body").prepend(flash);
     })
     .always(function(){
       $(".content__main__footer--send").prop("disabled", false);
+      setTimeout(function(){
+        $(".notice").remove();
+        $(".alert").remove();
+      },1000);
     });
   });
 });
