@@ -70,12 +70,12 @@ $(function(){
       $("body").prepend(flash);
     })
     .always(function(){
-      $(".content__main__footer--send").prop("disabled", false);
       setTimeout(function(){
         $(".notice").remove();
         $(".alert").remove();
       },1000);
     });
+    return false;
   });
 });
 
