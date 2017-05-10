@@ -1,5 +1,6 @@
 class GroupsController < ApplicationController
   before_action :set_group, only: [:edit, :update]
+  before_action :get_users, only: [:new, :edit]
 
   def new
     @group = Group.new
@@ -34,6 +35,10 @@ class GroupsController < ApplicationController
 
   def set_group
     @group = Group.find(params[:id])
+  end
+
+  def get_users
+    @users = User.all
   end
 end
 

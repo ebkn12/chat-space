@@ -70,6 +70,14 @@
       padding: 10px 15px;
       box-sizing: border-box;
     }
+
+    #search__user--result {
+      float: left;
+      width: 100%;
+      line-height: 30px;
+      padding: 10px 15px;
+      box-sizing: border-box;
+    }
   }
 
   .chat-group-user {
@@ -81,6 +89,7 @@
 
     .chat-group-user__name {
       float: left;
+      margin-right: 10px;
     }
 
     .chat-group-user__btn {

@@ -1,40 +1,72 @@
 $(function(){
-  function buildHTML(user){
-    console.log(user);
-    var html = $(`
-      <div class="chat-group-user">
+  function searchUsers(user){
+    var html = `
+      <div class="chat-group-user add-user">
         <div class="chat-group-user__name">
           ${ user.name }
         </div>
-      </div>
-    `);
+        <a class="chat-group-user__btn chat-group-user__btn--add" data-user_id="${ user.id }" data-user_name="${ user.name }">
+          追加
+        </a>
+      </div>`;
 
+    return html;
+  }
+
+  function addUser(user_id, user_name) {
+    var html = `
+        <div class="chat-group-user remove-user">
+          <p class="chat-group-user__name">
+            ${ user_name }
+          </p>
+          <a class="user-search-remove chat-group-user__btn chat-group-user__btn--remove" data-user_id="${ user_id }">
+            削除
+          </a>
+          <input type="hidden" name="group[user_ids][]" value="${ user_id }">
+        </div>
+      `;
     return html;
   }
 
   $("#chat-group-form__search").on("keyup", function(e){
     e.preventDefault();
+    var preInput = "";
     var input = $.trim($("#chat-group-form__search").val());
-    $.ajax({
-      type: "GET",
-      url: "/users/search",
-      data: {
-        keyword: input
-      },
-      dataType: "json"
-    })
-    .done(function(data){
-      var displayResult = "";
-      console.log(data);
-      $.each(data, function(index, user){
-        displayResult += buildHTML(user);
-        console.log(user);
+    if (preInput != input){
+      $.ajax({
+        type: "GET",
+        url: "/users/search",
+        data: {
+          keyword: input
+        },
+        dataType: "json"
+      })
+      .done(function(data){
+        var displayResult = "";
+        $.each(data, function(index, user){
+          displayResult += searchUsers(user);
+        });
+        $("#search__user--result").html(displayResult);
+      })
+      .fail(function(data){
+        alert("error");
       });
-      $("#search__user--result").html(displayResult);
-    })
-    .fail(function(data){
-      alert("error");
-    })
+    }
+    return false;
+  });
+
+  $(document).on("click", ".chat-group-user__btn--add", function(e){
+    e.preventDefault();
+    var user_id = $(this).data("user_id");
+    var user_name = $(this).data("user_name");
+    $(this).parent().remove();
+    var addUserHTML = addUser(user_id, user_name);
+    $("#search__user--result").append(addUserHTML);
+  });
+
+  $(document).on("click", ".chat-group-user__btn--remove", function(e){
+    e.preventDefault();
+    $(this).parent().remove();
   });
 });
 

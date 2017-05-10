@@ -1,6 +1,6 @@
 $(function(){
   function buildHTML(message){
-    var html = $(`
+    var html = `
       <li class="content__main__chat__message">
         <span class="content__main__chat__message__name">
           ${ message.name }
@@ -12,7 +12,7 @@ $(function(){
           ${ message.body }
         </div>
       </li>
-    `);
+    `;
 
     return html;
   }
