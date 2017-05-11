@@ -1,4 +1,26 @@
 .chat-group-form
   %h1 チャットグループ編集
-  = render "form"
+  = form_for (@group) do |f|
+    .chat-group-form__field
+      .chat-group-form__field--left
+        = f.label "グループ名", class: "chat-group-form__label"
+      .chat-group-form__field--right
+        = f.text_field :name, class: "chat-group-form__input", placeholder: "グループ名を入力してください", value: @group.name
+    .chat-group-form__field
+      .chat-group-form__field--left
+        = f.label "チャットメンバーを追加", class: "chat-group-form__label"
+      .chat-group-form__field--right
+        %input#chat-group-form__search.chat-group-form__input{ type: "text", placeholder: "追加するユーザー名を入力してください" }
+        #search__user--result
+        = hidden_field_tag "group[user_ids][]", current_user.id
+    .chat-group-form__field
+      .chat-group-form__field--left
+        = f.label "チャットメンバー", class: "chat-group-form__label"
+      .chat-group-form__field--left
+        .chat-group-user
+          = render partial: "user"
+    .chat-group-form__field
+      .chat-group-form__field--left
+      .chat-group-form__field--right
+        = f.submit "Save", class: "chat-group-form__action-btn"
 
