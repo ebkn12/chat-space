@@ -28,9 +28,9 @@ $(function(){
     return html;
   }
 
+  var preInput = "";
   $("#chat-group-form__search").on("keyup", function(e){
     e.preventDefault();
-    var preInput = "";
     var input = $.trim($("#chat-group-form__search").val());
     if (preInput != input){
       $.ajax({
@@ -52,6 +52,7 @@ $(function(){
         alert("error");
       });
     }
+    preInput = input;
     return false;
   });
 
