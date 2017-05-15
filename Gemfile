@@ -11,6 +11,10 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem "haml-rails"
 gem "font-awesome-rails"
 gem "devise"
+gem "carrierwave"
+gem "mini_magick"
+gem "fog"
+gem "dotenv-rails"
 
 group :development, :test do
   gem 'byebug'
