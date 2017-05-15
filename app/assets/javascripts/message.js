@@ -1,7 +1,8 @@
 $(function(){
   function buildHTML(message){
+    var html;
     if (message.image){
-      var html = `
+      html = `
         <li class="content__main__chat__message">
           <span class="content__main__chat__message__name">
             ${ message.name }
@@ -18,7 +19,7 @@ $(function(){
         </li>
       `;
     } else {
-      var html = `
+      html = `
         <li class="content__main__chat__message">
           <span class="content__main__chat__message__name">
             ${ message.name }
