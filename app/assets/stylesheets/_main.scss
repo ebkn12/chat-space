@@ -36,12 +36,13 @@
   }
   &__chat {
     width: calc(100% - 80px);
-    height: calc(100% - 300px);
-    padding: 46px 40px 0 40px;
+    height: calc(100% - 280px);
+    padding: 20px 40px 0 40px;
     background-color: #FFFFFF;
     clear: both;
     overflow: scroll;
     &__message {
+      padding-bottom: 30px;
       &__name {
         padding-bottom: 10px;
         font-size: 16px;
@@ -55,8 +56,12 @@
       }
       &__text {
         font-size: 14px;
-        padding-bottom: 40px;
       }
+    }
+    &__image {
+      padding-top: 5px;
+      height: 200px;
+      width: 300px;
     }
   }
   &__footer {
