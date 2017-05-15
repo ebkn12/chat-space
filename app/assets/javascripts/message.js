@@ -1,24 +1,40 @@
 $(function(){
   function buildHTML(message){
-    var post_image = message.image ? `
-    <div class="content__main__chat__image">
-      <image src=${ message.image }></image>
-    </div>
-    ` : "";
-    var html = `
-      <li class="content__main__chat__message">
-        <span class="content__main__chat__message__name">
-          ${ message.name }
-        </span>
-        <span class= "content__main__chat__message__time">
-          ${ message.updated_at }
-        </span>
-        <div class="content__main__chat__message__text">
-          ${ message.body }
+    if (message.image){
+      var post_image = `
+        <div class="content__main__chat__image">
+          <image src=${ message.image }></image>
         </div>
-        ${ post_image }
-      </li>
-    `;
+      `;
+      var html = `
+        <li class="content__main__chat__message">
+          <span class="content__main__chat__message__name">
+            ${ message.name }
+          </span>
+          <span class= "content__main__chat__message__time">
+            ${ message.updated_at }
+          </span>
+          <div class="content__main__chat__message__text">
+            ${ message.body }
+          </div>
+          ${ post_image }
+        </li>
+      `;
+    } else {
+      var html = `
+        <li class="content__main__chat__message">
+          <span class="content__main__chat__message__name">
+            ${ message.name }
+          </span>
+          <span class= "content__main__chat__message__time">
+            ${ message.updated_at }
+          </span>
+          <div class="content__main__chat__message__text">
+            ${ message.body }
+          </div>
+        </li>
+      `;
+    }
 
     return html;
   }
