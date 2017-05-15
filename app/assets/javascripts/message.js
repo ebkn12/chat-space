@@ -1,11 +1,6 @@
 $(function(){
   function buildHTML(message){
     if (message.image){
-      var post_image = `
-        <div class="content__main__chat__image">
-          <image src=${ message.image }></image>
-        </div>
-      `;
       var html = `
         <li class="content__main__chat__message">
           <span class="content__main__chat__message__name">
@@ -17,7 +12,9 @@ $(function(){
           <div class="content__main__chat__message__text">
             ${ message.body }
           </div>
-          ${ post_image }
+          <div class="content__main__chat__image">
+            <image src=${ message.image }></image>
+          </div>
         </li>
       `;
     } else {
