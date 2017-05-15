@@ -14,3 +14,7 @@
 
 # Ignore image files
 /app/assets/images/*
+
+# Ignore env file
+/.env
+
