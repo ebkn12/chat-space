@@ -103,22 +103,26 @@ $(function(){
   });
 
   setInterval(function(){
-    $.ajax({
-      type: "GET",
-      url: "./new",
-      dataType: "json"
-    })
-    .done(function(data){
-      var new_messages = data;
-      $(".content__main__chat").empty();
-      $.each(new_messages, function(index, message){
-        var html = buildHTML(message);
-        $(".content__main__chat").append(html);
+    var path = location.pathname.split("/");
+    if(path[3]+path[4] === "messagesnew"){
+      $.ajax({
+        type: "GET",
+        url: "./new",
+        dataType: "json"
+      })
+      .done(function(data){
+        var new_messages = data;
+        $(".content__main__chat").empty();
+        $.each(new_messages, function(index, message){
+          var html = buildHTML(message);
+          $(".content__main__chat").append(html);
+        });
+        autoScroll();
+      })
+      .fail(function(){
+        alert("データの更新に失敗しました");
       });
-    })
-    .fail(function(){
-      alert("データの更新に失敗しました");
-    });
+    };
   }, 3000);
 });
 
