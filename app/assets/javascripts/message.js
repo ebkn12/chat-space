@@ -105,6 +105,7 @@ $(function(){
   setInterval(function(){
     var path = location.pathname.split("/");
     if(path[3]+path[4] === "messagesnew"){
+      var messages = $(".content__main__chat");
       $.ajax({
         type: "GET",
         url: "./new",
@@ -117,7 +118,9 @@ $(function(){
           var html = buildHTML(message);
           $(".content__main__chat").append(html);
         });
-        autoScroll();
+        if($(".content__main__chat") !== messages){
+          autoScroll();
+        };
       })
       .fail(function(){
         alert("データの更新に失敗しました");
