@@ -7,6 +7,10 @@ class MessagesController < ApplicationController
   end
 
   def new
+    respond_to do |format|
+      format.html
+      format.json
+    end
   end
 
   def create
