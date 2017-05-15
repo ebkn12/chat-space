@@ -1,5 +1,10 @@
 $(function(){
   function buildHTML(message){
+    var post_image = message.image ? `
+    <div class="content__main__chat__image">
+      <image src=${ message.image }></image>
+    </div>
+    ` : "";
     var html = `
       <li class="content__main__chat__message">
         <span class="content__main__chat__message__name">
@@ -11,6 +16,7 @@ $(function(){
         <div class="content__main__chat__message__text">
           ${ message.body }
         </div>
+        ${ post_image }
       </li>
     `;
 
