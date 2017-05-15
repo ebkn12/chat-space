@@ -43,19 +43,23 @@ $(function(){
     }, 1000);
   }
 
+  $(".content__main__footer--picture").on("change", function(){
+    $("#new_message").submit();
+  });
+
   $("#new_message").on("submit", function(e){
     e.preventDefault();
     var textField = $(".content__main__footer--message");
     var input = textField.val();
+    var form_data = new FormData($(this).get(0));
     $.ajax({
       type: "POST",
       url: "./",
-      data: {
-        message: {
-          body: input
-        }
-      },
-      dataType: "json"
+      data: form_data,
+      dataType: "json",
+      processData: false,
+      contentType: false,
+      cotext: this,
     })
     .done(function(data){
       var flash = successFlash();
