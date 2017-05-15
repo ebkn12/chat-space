@@ -40,7 +40,7 @@ $(function(){
   function autoScroll() {
     $('.content__main__chat').animate( {
       scrollTop: $(document).height()
-    }, 0);
+    }, 1000);
   }
 
   $("#new_message").on("submit", function(e){
