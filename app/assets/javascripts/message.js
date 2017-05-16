@@ -43,8 +43,7 @@ $(function(){
         メッセージの送信に成功しました
       </div>
     `;
-
-    return flash;
+    $("body").prepend(flash);
   }
 
   function errorFlash(){
@@ -53,8 +52,7 @@ $(function(){
         メッセージの送信に失敗しました
       </div>
     `;
-
-    return flash;
+    $("body").prepend(flash);
   }
 
   function autoScroll() {
@@ -78,20 +76,23 @@ $(function(){
       data: form_data,
       dataType: "json",
       processData: false,
-      contentType: false,
-      cotext: this,
+      contentType: false
     })
     .done(function(data){
-      var flash = successFlash();
-      $("body").prepend(flash);
-      var html = buildHTML(data);
-      $(".content__main__chat").append(html);
-      $(".content__main__footer--message").val("");
-      autoScroll();
+      if($.type(data) === "object"){
+        successFlash();
+        var html = buildHTML(data);
+        $(".content__main__chat").append(html);
+        $(".content__main__footer--message").val("");
+        textField.empty();
+        $("#message_image").val("");
+        autoScroll();
+      } else {
+        errorFlash();
+      }
     })
     .fail(function(data){
-      var flash = errorFlash();
-      $("body").prepend(flash);
+      errorFlash();
     })
     .always(function(){
       setTimeout(function(){
@@ -102,37 +103,35 @@ $(function(){
     return false;
   });
 
-  function getDiff() {
-    if($(".content__main__chat__message")) {
-      var last_id = $(".content__main__chat__message").last().data("id");
-    }
-  }
-
   setInterval(function(){
     var path = location.pathname.split("/");
     if(path[3]+path[4] === "messagesnew"){
-      getDiff()
-      var messages = $(".content__main__chat");
-      $.ajax({
-        type: "GET",
-        url: "./new",
-        dataType: "json"
-      })
-      .done(function(data){
-        var new_messages = data;
-        $(".content__main__chat").empty();
-        $.each(new_messages, function(index, message){
+      reload_messages();
+    };
+  }, 3000);
+
+  function reload_messages(){
+    var last_message_id = $(".content__main__chat__message").last().data("id");
+    $.ajax({
+      type: "GET",
+      url: "./new",
+      data: {
+        last_message_id: last_message_id
+      },
+      dataType: "json"
+    })
+    .done(function(data){
+      if(data.length > 0){
+        $.each(data, function(index, message){
           var html = buildHTML(message);
           $(".content__main__chat").append(html);
         });
-        if($(".content__main__chat") !== messages){
-          autoScroll();
-        };
-      })
-      .fail(function(){
-        alert("データの更新に失敗しました");
-      });
-    };
-  }, 3000);
+        autoScroll();
+      }
+    })
+    .fail(function(){
+      alert("データの更新に失敗しました");
+    });
+  };
 });
 
