@@ -3,7 +3,7 @@ $(function(){
     var html;
     if (message.image){
       html = `
-        <li class="content__main__chat__message">
+        <li class="content__main__chat__message" data-id="${ message.id }">
           <span class="content__main__chat__message__name">
             ${ message.name }
           </span>
@@ -20,7 +20,7 @@ $(function(){
       `;
     } else {
       html = `
-        <li class="content__main__chat__message">
+        <li class="content__main__chat__message" data-id="${ message.id }">
           <span class="content__main__chat__message__name">
             ${ message.name }
           </span>
@@ -102,9 +102,16 @@ $(function(){
     return false;
   });
 
+  function getDiff() {
+    if($(".content__main__chat__message")) {
+      var last_id = $(".content__main__chat__message").last().data("id");
+    }
+  }
+
   setInterval(function(){
     var path = location.pathname.split("/");
     if(path[3]+path[4] === "messagesnew"){
+      getDiff()
       var messages = $(".content__main__chat");
       $.ajax({
         type: "GET",
