@@ -33,6 +33,7 @@ end
 
 group :production do
   gem "unicorn"
+  gem "fog-aws"
 end
 
 group :development, :test do

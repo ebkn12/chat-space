@@ -2,56 +2,21 @@ $(function(){
   function buildHTML(message){
     var html;
     if (message.image){
-      html = `
-        <li class="content__main__chat__message" data-id="${ message.id }">
-          <span class="content__main__chat__message__name">
-            ${ message.name }
-          </span>
-          <span class= "content__main__chat__message__time">
-            ${ message.updated_at }
-          </span>
-          <div class="content__main__chat__message__text">
-            ${ message.body }
-          </div>
-          <div class="content__main__chat__image">
-            <image src=${ message.image }></image>
-          </div>
-        </li>
-      `;
+      html = "<li class='content__main__chat__message' data-id='" + message.id + "'><span class='content__main__chat__message__name'>" + message.name + "</span><span class= 'content__main__chat__message__time'>"+ message.updated_at + "</span><div class='content__main__chat__message__text'>" + message.body + "</div><div class='content__main__chat__image'><image src='" + message.image + "'></image></div></li>";
     } else {
-      html = `
-        <li class="content__main__chat__message" data-id="${ message.id }">
-          <span class="content__main__chat__message__name">
-            ${ message.name }
-          </span>
-          <span class= "content__main__chat__message__time">
-            ${ message.updated_at }
-          </span>
-          <div class="content__main__chat__message__text">
-            ${ message.body }
-          </div>
-        </li>
-      `;
+      html = "<li class='content__main__chat__message' data-id='" + message.id + "'><span class='content__main__chat__message__name'>" + message.name + "</span><span class= 'content__main__chat__message__time'>"+ message.updated_at + "</span><div class='content__main__chat__message__text'>" + message.body + "</div></li>";
     }
 
     return html;
   }
 
   function successFlash(){
-    var flash = `
-      <div class="notice">
-        メッセージの送信に成功しました
-      </div>
-    `;
+    var flash = "<div class='notice'>メッセージの送信に成功しました</div>";
     $("body").prepend(flash);
   }
 
   function errorFlash(){
-    var flash = `
-      <div class="alert">
-        メッセージの送信に失敗しました
-      </div>
-    `;
+    var flash = "<div class='alert'>メッセージの送信に失敗しました</div>";
     $("body").prepend(flash);
   }
 
