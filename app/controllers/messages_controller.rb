@@ -7,6 +7,12 @@ class MessagesController < ApplicationController
   end
 
   def new
+    respond_to do |format|
+      format.html
+      format.json {
+        @messages = @group.messages.presence_of_new_message(params[:last_message_id])
+      }
+    end
   end
 
   def create
