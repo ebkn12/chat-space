@@ -1,49 +1,51 @@
 # DB構成
-***
-### users table
-##### association
-* has_many :group_users
-* has_many :groups, through: :group_users
-* has_many :messages
+
+## users table
 
 |Column|Type|Options|
 |:-:|:-:|:-:|
-|name|string|null: false, index: true, unique: true|
+|name|text|null: false, unique: true, index: true|
 
-### groups table
 ##### association
-* has_many :group_users
-* has_many :users, through: :group_users
-* has_many :messages
+- has_many :group_users
+- has_many :groups, through: :group_users
+- has_many :messages
+
+
+## groups table
 
 |Column|Type|Options|
 |:-:|:-:|:-:|
 |name|string|null: false, unique: true|
 
-### group_users table
 ##### association
-* belongs_to :user
-* belongs_to :group
+- has_many :group_users
+- has_many :users, through: :group_users
+- has_many :messages
+
+
+## group_users table
 
 |Column|Type|Options|
 |:-:|:-:|:-:|
-|user_id|integer|null: false|
-|group_id|integer|null: false|
-##### references
-references :user, foreign_key: true
-references :group, foreign_key: true
+|user_id|reference|null: false, foreign_key: true|
+|group_id|reference|null: false, foreign_key: true|
 
-### messages table
 ##### association
-* belongs_to :user
-* belongs_to :group
+- belongs_to :user
+- belongs_to :group
+
+
+## messages table
 
 |Column|Type|Options|
 |:-:|:-:|:-:|
 |body|text||
 |image|string||
-|user_id|integer|null: false|
-|group_id|integer|null: false|
-##### references
-references :user, foreign_key: true
-references :group, foreign_key: true
+|user_id|reference|null: false, foreign_key: true|
+|group_id|reference|null: false, foreign_key: true|
+
+##### association
+- belongs_to :user
+- belongs_to :group
+
