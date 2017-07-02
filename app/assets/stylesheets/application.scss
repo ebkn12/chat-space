@@ -1,11 +1,9 @@
-/*
- *= require font-awesome
-*/
-@import "./reset";
-@import "./config/variables";
-@import "./side";
-@import "./main";
-@import "./user";
-@import "./flash";
-@import "./group";
+@import "modules/reset";
+@import "font-awesome";
+@import "config/variables";
+@import "modules/side";
+@import "modules/main";
+@import "modules/user";
+@import "modules/flash";
+@import "modules/group";
 
