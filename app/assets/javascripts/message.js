@@ -1,11 +1,15 @@
 $(function(){
   function buildHTML(message){
-    var html;
-    if (message.image){
-      html = "<li class='content__main__chat__message' data-id='" + message.id + "'><span class='content__main__chat__message__name'>" + message.name + "</span><span class= 'content__main__chat__message__time'>"+ message.updated_at + "</span><div class='content__main__chat__message__text'>" + message.body + "</div><div class='content__main__chat__image'><image src='" + message.image + "'></image></div></li>";
-    } else {
-      html = "<li class='content__main__chat__message' data-id='" + message.id + "'><span class='content__main__chat__message__name'>" + message.name + "</span><span class= 'content__main__chat__message__time'>"+ message.updated_at + "</span><div class='content__main__chat__message__text'>" + message.body + "</div></li>";
-    }
+    var image_block = message.image ? "<image src='" + message.image + "'></image></div></li>" : "";
+
+    var html = "<li class='content__main__chat__message' data-id='" + message.id + "'><span class='content__main__chat__message__name'>"
+    + message.name +
+    "</span><span class= 'content__main__chat__message__time'>"
+    + message.updated_at +
+    "</span><div class='content__main__chat__message__text'>" +
+    message.body +
+    "</div><div class='content__main__chat__image'>" +
+    image_block;
 
     return html;
   }
@@ -35,6 +39,7 @@ $(function(){
     var textField = $(".content__main__footer--message");
     var input = textField.val();
     var form_data = new FormData($(this).get(0));
+
     $.ajax({
       type: "POST",
       url: "./",
@@ -63,26 +68,25 @@ $(function(){
       setTimeout(function(){
         $(".notice").remove();
         $(".alert").remove();
-      },1000);
+      }, 1000);
     });
     return false;
   });
 
   setInterval(function(){
     var path = location.pathname.split("/");
-    if(path[3]+path[4] === "messagesnew"){
+    if(path[3] + path[4] === "messagesnew"){
       reload_messages();
     };
   }, 3000);
 
   function reload_messages(){
     var last_message_id = $(".content__main__chat__message").last().data("id");
+
     $.ajax({
       type: "GET",
       url: "./new",
-      data: {
-        last_message_id: last_message_id
-      },
+      data: { last_message_id: last_message_id },
       dataType: "json"
     })
     .done(function(data){

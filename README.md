@@ -1,4 +1,4 @@
-# DB構成
+# DB
 
 ## users table
 
