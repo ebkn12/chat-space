@@ -1,5 +1,5 @@
 class MessagesController < ApplicationController
-  before_action :set_groups, only: [:new, :create]
+  before_action :set_groups, only: %i[new create]
   before_action :set_messages, only: :new
 
   def index
@@ -9,9 +9,7 @@ class MessagesController < ApplicationController
   def new
     respond_to do |format|
       format.html
-      format.json {
-        @messages = @group.messages.presence_of_new_message(params[:last_message_id])
-      }
+      format.json { @messages = @group.messages.presence_of_new_message(params[:last_message_id]) }
     end
   end
 
