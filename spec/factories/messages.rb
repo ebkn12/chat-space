@@ -4,4 +4,3 @@ FactoryGirl.define do
     image    Faker::Avatar.image
   end
 end
-

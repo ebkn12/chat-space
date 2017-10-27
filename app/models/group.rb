@@ -10,4 +10,3 @@ class Group < ApplicationRecord
     messages.last.try(:body) || "No messages"
   end
 end
-

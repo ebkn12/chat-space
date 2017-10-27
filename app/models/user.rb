@@ -10,4 +10,3 @@ class User < ApplicationRecord
     where.not(id: id).where("name LIKE(?)","%#{keyword}%").order("updated_at ASC")
   }
 end
-

@@ -54,4 +54,3 @@ $(function(){
     $(this).parent().remove();
   });
 });
-

@@ -10,4 +10,3 @@ class Message < ApplicationRecord
     where("id > ?", last_message)
   }
 end
-
