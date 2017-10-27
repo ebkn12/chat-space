@@ -1,12 +1,12 @@
 Rails.application.routes.draw do
   devise_for :users
-  resources :groups, except: [:index, :show, :destroy] do
-    resources :messages, only: [:index, :new, :create]
+  resources :groups, except: %i[index show destroy] do
+    resources :messages, only: %i[index new create]
   end
   resources :users, only: [] do
     collection do
-      get "search"
+      get 'search'
     end
   end
-  root "messages#index"
+  root 'messages#index'
 end
