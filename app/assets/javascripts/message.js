@@ -101,5 +101,5 @@ $(function(){
     .fail(function(){
       alert("データの更新に失敗しました");
     });
-  };
+  }
 });
