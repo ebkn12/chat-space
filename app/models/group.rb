@@ -7,6 +7,6 @@ class Group < ApplicationRecord
   validates :user_ids, presence: true
 
   def latest_message
-    messages.last.try(:body) || "No messages"
+    messages.last.try(:body) || 'No messages'
   end
 end
