@@ -6,7 +6,7 @@ class Message < ApplicationRecord
 
   mount_uploader :image, ImageUploader
 
-  scope :presence_of_new_message, ->(last_message) {
-    where("id > ?", last_message)
-  }
+  scope :presence_of_new_message, lambda do |last_message|
+    where('id > ?', last_message)
+  end
 end
