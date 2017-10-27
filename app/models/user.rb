@@ -6,7 +6,7 @@ class User < ApplicationRecord
   has_many :groups, through: :group_users
   has_many :messages
 
-  scope :get_keyword, ->(id, keyword) {
-    where.not(id: id).where("name LIKE(?)","%#{keyword}%").order("updated_at ASC")
-  }
+  scope :get_keyword, lambda do |id, keyword|
+    where.not(id: id).where('name LIKE(?)', "%#{keyword}%").order('updated_at ASC')
+  end
 end
