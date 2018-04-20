@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :message do
     body     Faker::Lorem.sentence
     image    Faker::Avatar.image
