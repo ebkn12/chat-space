@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails'
+gem 'rails', '5.1.6'
 gem 'mysql2'
 gem 'sass-rails'
 gem 'uglifier'
@@ -17,7 +17,7 @@ gem "dotenv-rails"
 group :development, :test do
   gem 'byebug'
   gem "rspec-rails"
-  gem "factory_girl_rails"
+  gem "factory_bot_rails"
   gem "faker"
   gem "rails-controller-testing", require: false
   gem 'capistrano'
