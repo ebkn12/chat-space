@@ -13,6 +13,7 @@ gem "carrierwave"
 gem "mini_magick"
 gem "fog"
 gem "dotenv-rails"
+gem "bootsnap"
 
 group :development, :test do
   gem 'byebug'
@@ -30,6 +31,7 @@ end
 group :development do
   gem 'web-console', '~> 2.0'
   gem 'spring'
+  gem "listen"
   gem "pry-rails"
 end
 
